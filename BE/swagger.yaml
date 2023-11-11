@@ -1,0 +1,131 @@
+securityDefinitions:
+  bearerAuth:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: Enter your Bearer token in the format 'Bearer {token}'
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: authentication
+    description: authentication API
+
+paths:
+  # [POST] v1/api/login
+  /v1/api/login:
+    post:
+      security:
+        - {}
+      tags:
+        - auth
+      summary: User Login
+      parameters:
+        - name: body
+          in: body
+          description: Login credentials
+          required: true
+          schema:
+            $ref: '#/definitions/loginInput'
+      responses:
+        200:
+          description: 'OK'
+          schema:
+            $ref: '#/definitions/User'
+        401:
+          description: 'Unauthorized'
+        500:
+          description: 'Server Error'
+
+  # [POST] v1/api/signup
+  /v1/api/signup:
+    post:
+      security:
+        - {}
+      tags:
+        - users
+      summary: User Signup
+      parameters:
+        - name: body
+          in: body
+          description: Signup details
+          required: true
+          schema:
+            $ref: '#/definitions/signupInput'
+      responses:
+        201:
+          description: 'Created'
+          schema:
+            $ref: '#/definitions/User'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# definitions
+definitions:
+  User:
+    type: object
+    required:
+      - id
+      - username
+      - email
+      - phone
+      - status
+    properties:
+      id:
+        type: string
+        definition: User's id
+      username:
+        type: string
+        description: User's username
+      email:
+        type: string
+        description: User's email
+      phone:
+        type: string
+        description: User's phone number
+      status:
+        type: boolean
+        description: User's status
+
+  loginInput:
+    type: object
+    required:
+      - username
+      - password
+    properties:
+      username:
+        type: string
+        description: User username for login
+      password:
+        type: string
+        description: User password for login
+
+  signupInput:
+    type: object
+    required:
+      - username
+      - email
+      - password
+      - phone
+    properties:
+      username:
+        type: string
+        description: User's username for signup
+      email:
+        type: string
+        description: User's email for signup
+      password:
+        type: string
+        description: User's password for signup
+      phone:
+        type: string
+        description: User's phone number for signup
+
+schemes:
+  - https
+  - http
