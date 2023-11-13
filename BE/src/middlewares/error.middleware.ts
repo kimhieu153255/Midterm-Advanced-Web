@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 import { HttpException } from '@core/error.response';
-import { logger } from '@utils/logger';
 import { NODE_ENV } from '@/config';
 
 export const ErrorMiddleware = (error: HttpException, req: Request, res: Response, next: NextFunction) => {
@@ -10,7 +9,7 @@ export const ErrorMiddleware = (error: HttpException, req: Request, res: Respons
     const rootError: Error = error.rootError || null;
     const name: string = error.name || 'HttpException';
 
-    logger.error(`[${req.method}] ${req.path} >> StatusCode:: ${status}, Name:: ${name} Message:: ${message}, RootError:: ${rootError}`);
+    console.error(`[${req.method}] ${req.path} >> StatusCode:: ${status}, Name:: ${name} Message:: ${message}, RootError:: ${rootError}`);
     res.status(status).json({
       name: name,
       code: status,
