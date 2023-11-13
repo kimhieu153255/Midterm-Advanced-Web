@@ -21,7 +21,7 @@ export class App {
   constructor(routes: Routes[]) {
     this.app = express();
     this.env = NODE_ENV || 'development';
-    this.port = PORT || 3000;
+    this.port = PORT || 20120;
 
     this.connectToDatabase();
     this.initializeMiddlewares();
@@ -59,6 +59,15 @@ export class App {
   }
 
   private initializeRoutes(routes: Routes[]) {
+    this.app.get('/', (req, res) => {
+      res.json({
+        name: 'Midterm Advanced Web Application Development',
+        version: '1.0.0',
+        health: 'OK',
+        docs: `http://localhost:${this.port}/api-docs`,
+      });
+    });
+
     routes.forEach(route => {
       this.app.use('/v1/api', route.router);
     });

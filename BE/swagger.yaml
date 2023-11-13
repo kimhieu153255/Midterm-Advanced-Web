@@ -44,7 +44,7 @@ paths:
       security:
         - {}
       tags:
-        - users
+        - auth
       summary: User Signup
       parameters:
         - name: body
