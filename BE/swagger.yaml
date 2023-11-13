@@ -65,6 +65,22 @@ paths:
         500:
           description: 'Server Error'
 
+  # [POST] v1/api/logout
+  /v1/api/logout:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - auth
+      summary: User Logout
+      responses:
+        200:
+          description: 'OK'
+        401:
+          description: 'Unauthorized'
+        500:
+          description: 'Server Error'
+
 # definitions
 definitions:
   User:
