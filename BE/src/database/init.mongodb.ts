@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import { DB_URI, NODE_ENV } from '@config';
-import { countConnect } from '@/helpers/check.connect';
 import { IDatabase } from '.';
 
 const connectString = DB_URI;
@@ -21,7 +20,6 @@ class MongoDBDatabase implements IDatabase {
       .connect(connectString)
       .then(() => {
         console.log('Connected MongoDB Success');
-        countConnect();
       })
       .catch(err => console.error(`Connected MongoDB Failed: ${err}`));
   }
