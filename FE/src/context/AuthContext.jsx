@@ -14,7 +14,7 @@ function AuthProvider(props) {
         token,
         setToken,
     };
-    return <AuthContext.Provider value={value} {...props}></AuthContext.Provider>;
+    return <AuthContext.Provider value={value} {...props} />;
 }
 
 export { AuthProvider, AuthContext };

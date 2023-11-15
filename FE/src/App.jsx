@@ -3,7 +3,7 @@ import Dashboard from './pages/DashboardPage';
 import Login from './pages/LoginPage';
 import Register from './pages/RegisterPage';
 import ErrorPage from './Pages/ErrorPage';
-import Nav from './pages/Layouts/Nav';
+import NavLayout from './components/layouts/NavLayout';
 
 function App() {
     return (
@@ -13,7 +13,7 @@ function App() {
                     path='/'
                     element={
                         <>
-                            <Nav />
+                            <NavLayout />
                             <Outlet />
                         </>
                     }

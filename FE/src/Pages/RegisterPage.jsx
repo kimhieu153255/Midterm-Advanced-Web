@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { validateEmail, validatePassword, validatePhone } from '../helpers/helper.js';
 import { useCookies } from 'react-cookie';
 import axiosSingleton from '../services/AxiosInstance.jsx';
+import InputLabelField from '../components/InputField.jsx';
 
 const Register = () => {
-    const [cookies, setCookies] = useCookies(['token']);
+    const [cookies, setCookie] = useCookies(['token']);
     const navigate = useNavigate();
     const [data, setData] = useState({
         username: '',
@@ -40,8 +41,10 @@ const Register = () => {
                     password: data.password,
                 });
                 const token = resLogin?.data?.metadata?.token;
-                setCookies('token', token);
-                navigate('/');
+                if (token != null) {
+                    setCookie('token', token);
+                    navigate('/');
+                }
             } else {
                 let message = res?.response?.data?.message;
                 setError(message);
@@ -91,76 +94,52 @@ const Register = () => {
             <div className='sm:w-2/6 w-3/5 mx-auto bg-gray-100 shadow-md sm:p-16 p-10 border rounded-md'>
                 <div className='flex flex-col gap-1.5 mx-auto'>
                     <h1 className='text-center font-bold text-3xl mb-5'>Register</h1>
-                    <div className='flex flex-col gap-1'>
-                        <label htmlFor='username' className='font-semibold'>
-                            Username
-                        </label>
-                        <input
-                            type='text'
-                            name='username'
-                            id='username'
-                            className='border-2 border-gray-400 rounded-md p-2 focus:border-green-500 focus:outline-none focus:ring-green-300 transition-all'
-                            required
-                            value={data.username}
-                            onChange={onChangeInput}
-                        />
-                    </div>
-                    <div className='flex flex-col gap-1 '>
-                        <label htmlFor='email' className='font-semibold'>
-                            Email
-                        </label>
-                        <input
-                            type='email'
-                            name='email'
-                            id='email'
-                            value={data.email}
-                            className='border-2 border-gray-400 rounded-md p-2 focus:border-green-500 focus:outline-none focus:ring-green-300 transition-all'
-                            required
-                            onChange={onChangeInput}
-                        />
-                    </div>
-                    <div className='flex flex-col gap-1 '>
-                        <label htmlFor='password' className='font-semibold'>
-                            Password
-                        </label>
-                        <input
-                            type='password'
-                            name='password'
-                            id='password'
-                            value={data.password}
-                            className='border-2 border-gray-400 rounded-md p-2 focus:border-green-500 focus:outline-none focus:ring-green-300 transition-all'
-                            required
-                            onChange={onChangeInput}
-                        />
-                    </div>
-                    <div className='flex flex-col gap-1 '>
-                        <label htmlFor='confirmPassword' className='font-semibold'>
-                            Confirm Password
-                        </label>
-                        <input
-                            type='password'
-                            name='confirmPassword'
-                            id='confirmPassword'
-                            value={data.confirmPassword}
-                            className='border-2 border-gray-400 rounded-md p-2 focus:border-green-500 focus:outline-none focus:ring-green-300 transition-all'
-                            required
-                            onChange={onChangeInput}
-                        />
-                    </div>
-                    <div className='flex flex-col gap-1 '>
-                        <label htmlFor='phone' className='font-semibold'>
-                            Phone
-                        </label>
-                        <input
-                            type='text'
-                            name='phone'
-                            id='phone'
-                            value={data.phone}
-                            className='border-2 border-gray-400 rounded-md p-2 focus:border-green-500 focus:outline-none focus:ring-green-300 transition-all'
-                            required
-                            onChange={onChangeInput}
-                        />
-                    </div>
+
+                    <InputLabelField
+                        label='Username'
+                        name='username'
+                        type='username'
+                        id='username'
+                        onChangeInput={onChangeInput}
+                        required
+                    />
+
+                    <InputLabelField
+                        label='Email'
+                        name='email'
+                        type='email'
+                        id='email'
+                        onChangeInput={onChangeInput}
+                        required
+                    />
+
+                    <InputLabelField
+                        label='Password'
+                        name='password'
+                        type='password'
+                        id='password'
+                        onChangeInput={onChangeInput}
+                        required
+                    />
+
+                    <InputLabelField
+                        label='Confirm Password'
+                        name='confirmPassword'
+                        type='password'
+                        id='confirmPassword'
+                        onChangeInput={onChangeInput}
+                        required
+                    />
+
+                    <InputLabelField
+                        label='Phone'
+                        name='phone'
+                        type='text'
+                        id='phone'
+                        onChangeInput={onChangeInput}
+                        required
+                    />
+
                     {error && (
                         <div className='text-red-500 text-sm font-semiboldm mt-4'>{error}</div>
                     )}
