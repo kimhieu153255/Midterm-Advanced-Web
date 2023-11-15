@@ -1,20 +1,32 @@
 module.exports = {
-  root: true,
-  env: { browser: true, es2020: true },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'plugin:react-hooks/recommended',
-  ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh'],
-  rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
+    root: true,
+    env: {
+        browser: true,
+        es2021: true,
+        jest: true,
+    },
+    extends: [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "next/core-web-vitals",
+        "prettier",
     ],
-  },
-}
+    ignorePatterns: ["dist", ".eslintrc.cjs"],
+    parserOptions: { ecmaVersion: "latest", sourceType: "module" },
+    settings: { react: { version: "18.2" } },
+    plugins: ["react-refresh", "react", "react-hooks", "@typescript-eslint", "prettier"],
+    rules: {
+        "react/react-in-jsx-scope": "off",
+        camelcase: "error",
+        "spaced-comment": "error",
+        quotes: ["warn", "single"],
+        "no-duplicate-imports": "error",
+        semi: "warn",
+        "array-bracket-spacing": "warn",
+        "arrow-parens": "off",
+        "react/no-unescaped-entities": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        // "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+    },
+};
