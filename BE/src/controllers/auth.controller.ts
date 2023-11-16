@@ -31,4 +31,19 @@ export class AuthController {
 
     new SuccessResponse({ message: 'logout', metadata: { id: logOutUserData._id } }).send(res, { 'Set-Cookie': 'Authorization=; Max-Age=0;' });
   };
+
+  public getMe = async (req: RequestWithUser, res: Response, _next: NextFunction) => {
+    const userData: User = req.user;
+
+    delete userData.password;
+
+    new SuccessResponse({ message: 'me', metadata: { user: userData } }).send(res);
+  };
+
+  public updateMe = async (req: RequestWithUser, res: Response, _next: NextFunction) => {
+    const userData: User = req.user;
+    const updateUserData: User = await this.authService.updateMe(userData._id, req.body);
+
+    new SuccessResponse({ message: 'updateMe', metadata: { userId: updateUserData._id } }).send(res);
+  };
 }

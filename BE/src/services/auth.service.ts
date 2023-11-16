@@ -49,4 +49,13 @@ export class AuthService {
 
     return findUser;
   }
+
+  public async updateMe(userId: string, userData: User): Promise<User> {
+    const findUser: User = await UserModel.findOne({ _id: userId });
+    if (!findUser) throw new NotFoundException(`This user was not found`);
+
+    const updateUserData: User = await UserModel.findByIdAndUpdate(userId, { ...userData }, { new: true });
+
+    return updateUserData;
+  }
 }

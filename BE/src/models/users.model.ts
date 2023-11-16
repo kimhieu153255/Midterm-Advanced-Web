@@ -16,6 +16,11 @@ const userSchema = new Schema<IUserDocument>(
       maxLength: 150,
       unique: true,
     },
+    fullName: {
+      type: String,
+      trim: true,
+      maxLength: 150,
+    },
     email: {
       type: String,
       trim: true,
@@ -24,6 +29,11 @@ const userSchema = new Schema<IUserDocument>(
     password: {
       type: String,
       required: true,
+    },
+    phone: {
+      type: String,
+      trim: true,
+      maxLength: 20,
     },
     status: {
       type: Boolean,

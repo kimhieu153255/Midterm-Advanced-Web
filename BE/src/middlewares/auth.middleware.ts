@@ -4,6 +4,7 @@ import { SECRET_KEY } from '@config';
 import { DataStoredInToken, RequestWithUser } from '@interfaces/auth.interface';
 import { HttpException } from '@/core/error.response';
 import UserModel from '@/models/users.model';
+import { User } from '@/interfaces/users.interface';
 
 export const authMiddleware = async (req: RequestWithUser, res: Response, next: NextFunction) => {
   try {
@@ -13,7 +14,7 @@ export const authMiddleware = async (req: RequestWithUser, res: Response, next: 
       const secretKey: string = SECRET_KEY;
       const verificationResponse = verify(Authorization, secretKey) as DataStoredInToken;
       const userId = verificationResponse._id;
-      const findUser = await UserModel.findById(userId);
+      const findUser: User = await UserModel.findById(userId).lean();
 
       if (findUser) {
         req.user = findUser;
