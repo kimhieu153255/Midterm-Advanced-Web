@@ -98,54 +98,54 @@ paths:
           description: 'Server Error'
 
   # [PUT] v1/api/me
-/v1/api/me:
-  put:
-    security:
-      - bearerAuth: []
-    tags:
-      - auth
-    summary: User update profile information
-    parameters:
-      - name: body
-        in: body
-        description: update profile body
-        required: true
-        schema:
-          $ref: '#/definitions/updateProfileInput'
-    responses:
-      200:
-        description: 'OK'
-      401:
-        description: 'Unauthorized'
-      500:
-        description: 'Server Error'
+  /v1/api/me:
+    put:
+      security:
+        - bearerAuth: []
+      tags:
+        - auth
+      summary: User update profile information
+      parameters:
+        - name: body
+          in: body
+          description: update profile body
+          required: true
+          schema:
+            $ref: '#/definitions/updateProfileInput'
+      responses:
+        200:
+          description: 'OK'
+        401:
+          description: 'Unauthorized'
+        500:
+          description: 'Server Error'
 
-# definitions
-definitions:
-  User:
-    type: object
-    required:
-      - id
-      - fullName
-      - username
-      - email
-      - phone
-    properties:
-      id:
-        type: string
-        definition: User's id
-      fullName:
-        type: string
-        description: User's full name
-      username:
-        type: string
-        description: User's username
-      email:
-        type: string
-        description: User's email
-      phone:
-        type: string
-        description: User's phone number
+  # definitions
+  definitions:
+    User:
+      type: object
+      required:
+        - id
+        - fullName
+        - username
+        - email
+        - phone
+      properties:
+        id:
+          type: string
+          definition: User's id
+        fullName:
+          type: string
+          description: User's full name
+        username:
+          type: string
+          description: User's username
+        email:
+          type: string
+          description: User's email
+        phone:
+          type: string
+          description: User's phone number
 
   loginInput:
     type: object

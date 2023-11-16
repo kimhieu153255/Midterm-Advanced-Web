@@ -51,20 +51,18 @@ const Nav = () => {
     };
 
     return (
-        <div className='shadow-md mb-2 px-[10%] bg-gray-100 min-w-max'>
+        <div className='shadow-md mb-2 px-[10%] py-3 bg-gray-100 min-w-max'>
             {/* nav top */}
-            <div className='p-1 pt-2 flex items-center justify-between gap-x-12 sm:gap-x-16 w-auto text-lg font-semibold min-w-max z-30 inset-1'>
-                <>
-                    <NavLink
-                        to={'/'}
-                        className={({ isActive }) =>
-                            (isActive == -1 ? 'text-green-500 ' : '') + 'hover:text-green-400'
-                        }
-                    >
-                        {'Home'}
-                    </NavLink>
-                </>
-                <div>
+            <div className='p-1 pt-2 flex items-center justify-between gap-x-12 sm:gap-x-16 w-auto text-xl font-bold min-w-max z-30 inset-1'>
+                <NavLink
+                    to={'/'}
+                    className={({ isActive }) =>
+                        (isActive ? 'text-green-500 ' : '') + 'hover:text-green-400 ml-4'
+                    }
+                >
+                    {'Home'}
+                </NavLink>
+                <div className='flex gap-5'>
                     {navList &&
                         navList?.map((item, index) => {
                             if (item.name === 'User')
@@ -84,7 +82,7 @@ const Nav = () => {
                                             </div>
                                         </div>
                                         {isDropdown && (
-                                            <div className='absolute bg-gray-200 shadow-md rounded-md py-2 px-8 flex flex-col gap-2'>
+                                            <div className='absolute bg-gray-200 shadow-md rounded-md py-2 px-8 flex flex-col gap-2 text-lg font-semibold'>
                                                 <button
                                                     className='hover:text-green-400 cursor-pointer border-b pb-1'
                                                     onClick={() => navigate('/user')}

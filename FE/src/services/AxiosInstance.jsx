@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useCookies } from 'react-cookie';
 
 const createAxios = () => {
     const axiosInstance = axios.create({
@@ -27,7 +28,16 @@ const createAxios = () => {
             return err;
         }
     };
-    return { get, post };
+    const put = async (url, data, params) => {
+        try {
+            const res = await axiosInstance.put(url, data, params);
+            return res;
+        } catch (err) {
+            console.log('Error: ', err);
+            return err;
+        }
+    };
+    return { get, post, put };
 };
 
 const axiosSingleton = createAxios();

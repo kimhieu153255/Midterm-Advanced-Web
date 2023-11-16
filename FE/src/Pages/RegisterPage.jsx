@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { validateEmail, validatePassword, validatePhone } from '../helpers/helper.js';
 import { useCookies } from 'react-cookie';
 import axiosSingleton from '../services/AxiosInstance.jsx';
-import InputLabelField from '../components/InputField.jsx';
+import InputLabelField from '../components/Fields/InputField';
 
 const Register = () => {
     const [cookies, setCookie] = useCookies(['token']);

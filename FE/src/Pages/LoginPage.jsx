@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import axiosSingleton from '../services/AxiosInstance';
-import InputLabelField from '../components/InputField';
+import InputLabelField from '../components/Fields/InputField';
 
 const Login = () => {
     const [cookies, setCookie] = useCookies(['token']);
