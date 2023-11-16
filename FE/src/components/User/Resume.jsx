@@ -2,7 +2,6 @@ import { useRef, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import axiosSingleton from '../../services/AxiosInstance';
-// import { FaX } from 'react-icons/fa6';
 
 const Resume = ({ user }) => {
     const [data, setData] = useState({});
@@ -10,22 +9,22 @@ const Resume = ({ user }) => {
     const navigate = useNavigate();
     const [cookies] = useCookies(['token']);
 
-    // const handleSubmit = async e => {
-    //     e.preventDefault();
-    //     try {
-    //         const res = await axiosSingleton.put('me', data, {
-    //             headers: {
-    //                 Authorization: `Bearer ${cookies.token}`,
-    //             },
-    //         });
-    //         if (res.status === 200) {
-    //             window.location.reload();
-    //         } else setError(res?.response?.data?.message);
-    //     } catch (error) {
-    //         console.log(error);
-    //         setError(error);
-    //     }
-    // };
+    const handleSubmit = async e => {
+        e.preventDefault();
+        try {
+            const res = await axiosSingleton.put('me', data, {
+                headers: {
+                    Authorization: `Bearer ${cookies.token}`,
+                },
+            });
+            if (res.status === 200) {
+                window.location.reload();
+            } else setError(res?.response?.data?.message);
+        } catch (error) {
+            console.log(error);
+            setError(error);
+        }
+    };
 
     return (
         <div className='flex flex-col w-full min-w-max p-14 shadow-md bg-gray-50 border rounded-lg h-full'>
