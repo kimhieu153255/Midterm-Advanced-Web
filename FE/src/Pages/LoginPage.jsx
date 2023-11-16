@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import axiosSingleton from '../services/AxiosInstance';
@@ -80,6 +80,12 @@ const Login = () => {
                     >
                         Login
                     </button>
+                </div>
+                <div className='flex items-center justify-center mt-8'>
+                    Hasn't account?{' '}
+                    <Link to={'/register'} className='text-blue-800 font-bold ml-2'>
+                        Register here
+                    </Link>
                 </div>
             </div>
         </div>

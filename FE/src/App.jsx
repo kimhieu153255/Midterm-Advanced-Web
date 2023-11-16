@@ -2,8 +2,9 @@ import { Outlet, Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/DashboardPage';
 import Login from './pages/LoginPage';
 import Register from './pages/RegisterPage';
-import ErrorPage from './Pages/ErrorPage';
 import NavLayout from './components/layouts/NavLayout';
+import Footer from './components/Footer';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                         <>
                             <NavLayout />
                             <Outlet />
+                            <Footer />
                         </>
                     }
                 >

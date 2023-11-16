@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { validateEmail, validatePassword, validatePhone } from '../helpers/helper.js';
 import { useCookies } from 'react-cookie';
 import axiosSingleton from '../services/AxiosInstance.jsx';
@@ -150,6 +150,12 @@ const Register = () => {
                     >
                         Register
                     </button>
+                    <div className='flex items-center justify-center mt-8'>
+                        Already have an account?{' '}
+                        <Link to={'/login'} className='text-blue-800 font-bold ml-2'>
+                            Login here
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
