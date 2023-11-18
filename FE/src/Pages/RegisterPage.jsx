@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { validateEmail, validatePassword, validatePhone } from '../helpers/helper.js';
+import { validateEmail, validatePassword, validatePhone } from '../Helpers/helper.js';
 import { useCookies } from 'react-cookie';
 import axiosSingleton from '../services/AxiosInstance.jsx';
 import InputLabelField from '../components/Fields/InputField';

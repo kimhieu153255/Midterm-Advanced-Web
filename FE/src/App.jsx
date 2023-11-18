@@ -1,10 +1,10 @@
 import { Outlet, Route, Routes } from 'react-router-dom';
-import Dashboard from './pages/DashboardPage';
-import Login from './pages/LoginPage';
-import Register from './pages/RegisterPage';
+import Dashboard from './Pages/DashboardPage';
+import Login from './Pages/LoginPage';
+import Register from './Pages/RegisterPage';
 import NavLayout from './components/layouts/Nav';
 import Footer from './components/layouts/Footer';
-import ErrorPage from './pages/ErrorPage';
+import ErrorPage from './Pages/ErrorPage';
 import User from './Pages/UserPage';
 import Layout from './components/layouts/Layout';
 
