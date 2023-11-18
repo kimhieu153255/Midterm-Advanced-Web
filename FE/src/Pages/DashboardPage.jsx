@@ -49,7 +49,7 @@ const DashboardPage = () => {
                     <div className={`flex w-full h-[550px] relative min-w-fit`}>
                         <div className='absolute border rounded-2xl w-full h-full object-cover z-0 opacity-50 '>
                             <img
-                                src='src/assets/images/shop.jpg'
+                                src='/images/shop.jpg'
                                 alt='logo'
                                 className='w-full h-full rounded-3xl '
                             />

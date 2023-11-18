@@ -3,7 +3,7 @@ import { useCookies } from 'react-cookie';
 
 const createAxios = () => {
     const axiosInstance = axios.create({
-        baseURL: `http://localhost:20120/v1/api/`,
+        baseURL: `${import.meta.env.VITE_BE_URL}v1/api/`,
         headers: {
             'Content-Type': 'application/json',
             timeout: 10000,
