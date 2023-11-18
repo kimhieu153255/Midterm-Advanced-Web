@@ -88,7 +88,7 @@ const Resume = ({ user }) => {
                         <div className='w-2/5 min-w-max flex flex-col justify-center items-center gap-2 border-l-2 border-gray-300 px-5'>
                             <div className='w-32 h-32 rounded-full'>
                                 <img
-                                    src={user?.avatar || '/images/avatar.avif'}
+                                    src={user?.avatar || 'images/avatar.avif'}
                                     alt='avatar'
                                     className='w-32 h-32 rounded-full object-cover  '
                                 ></img>
