@@ -39,7 +39,7 @@ const User = () => {
     useEffect(() => {
         if (cookies.token == null) navigate('/');
         getUser();
-    }, []);
+    }, [cookies.token]);
 
     return (
         <Layout>
