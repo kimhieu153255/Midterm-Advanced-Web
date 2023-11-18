@@ -31,7 +31,7 @@ const SideBarUser = ({ avatar, username }) => {
             <div className='flex items-center gap-3'>
                 <div className='border border-gray-400 ring-gray-100 inline-block rounded-full'>
                     <img
-                        src={avatar || 'src/assets/images/avatar.avif'}
+                        src={avatar || '/images/avatar.avif'}
                         alt='avatar'
                         className='w-10 h-10 rounded-full inline-block object-cover'
                     />
