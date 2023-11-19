@@ -26,10 +26,10 @@ function App() {
                     <Route path='/user' element={<User></User>}>
                         <Route path='' element={<User></User>} />
                     </Route>
+                    <Route path='*' element={<ErrorPage></ErrorPage>} />
+                    <Route path='/login' element={<Login></Login>} />
+                    <Route path='/register' element={<Register></Register>} />
                 </Route>
-                <Route path='*' element={<ErrorPage></ErrorPage>} />
-                <Route path='/login' element={<Login></Login>} />
-                <Route path='/register' element={<Register></Register>} />
             </Routes>
         </>
     );

@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import SideBarUser from '../components/User/SideBarUser';
 import Resume from '../components/User/Resume';
 import axiosSingleton from '../services/AxiosInstance';
 import { useCookies } from 'react-cookie';
 import Layout from '../components/layouts/Layout';
-import { FaX } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 
 const User = () => {
@@ -12,10 +11,6 @@ const User = () => {
     const [user, setUser] = useState({});
     const [cookies, setCookie] = useCookies(['token']);
     const navigate = useNavigate();
-    const onChangeInput = e => {
-        const { name, value } = e.target;
-        setData({ ...data, [name]: value });
-    };
 
     const getUser = async () => {
         console.log('token: ', cookies.token);
