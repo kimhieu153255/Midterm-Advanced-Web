@@ -13,6 +13,7 @@ const Register = () => {
         email: '',
         password: '',
         confirmPassword: '',
+        fullName: '',
         phone: '',
     });
 
@@ -59,6 +60,7 @@ const Register = () => {
     // Validate input fields
     const validate = () => {
         if (
+            data.fullName === '' ||
             data.confirmPassword === '' ||
             data.password === '' ||
             data.email === '' ||
@@ -94,6 +96,16 @@ const Register = () => {
             <div className='sm:w-2/6 w-3/5 mx-auto bg-gray-100 shadow-md sm:p-16 p-10 border rounded-md'>
                 <div className='flex flex-col gap-1.5 mx-auto'>
                     <h1 className='text-center font-bold text-3xl mb-5'>Register</h1>
+
+                    <InputLabelField
+                        label='Full name'
+                        name='fullName'
+                        type='text'
+                        id='fullName'
+                        onChangeInput={onChangeInput}
+                        required
+                    />
+
 
                     <InputLabelField
                         label='Username'
